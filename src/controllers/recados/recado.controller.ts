@@ -75,7 +75,7 @@ export class RecadoController {
 
       return res.status(StatusCodes.OK).send({
         ok: true,
-        message: `Recados successfully listed of user ${user.name}`,
+        message: `Recados successfully listed of user ${user.email}`,
         data: result.map((recado) => recado.toJsonR()),
       });
     } catch (error: any) {
@@ -176,7 +176,7 @@ export class RecadoController {
 
       return HttpResponse.success(
         res,
-        `Recados do ${existeUser.name} arquivado com sucesso!`,
+        `Recados do ${existeUser.email} arquivado com sucesso!`,
         listaRecadosUser.map((recado) => recado.toJsonR())
       );
     } catch (error: any) {

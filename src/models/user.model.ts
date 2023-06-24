@@ -6,16 +6,16 @@ export class User {
   public recados: Recado[] = [];
 
   constructor(
-    private _name: string,
+    // private _name: string,
     private _email: string,
     private _password: string,
   ) {
     this.id = createUuid();
   }
        //GET
-  public get name() {
-    return this._name;
-  }
+  // public get name() {
+  //   return this._name;
+  // }
 
   public get email() {
     return this._email;
@@ -36,7 +36,7 @@ export class User {
   public toJsonU() {
     return {
       id: this.id,
-      name: this._name,
+      // name: this._name,
       email: this._email,
     };
   }

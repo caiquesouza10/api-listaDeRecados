@@ -9,11 +9,11 @@ export class UserController {
 
   public create(req: Request, res: Response) {
     try {
-      const { name, email, password, repassword } = req.body;
+      const { email, password, repassword } = req.body;
 
       //aqui vai o codigo para validar a senha e no body tenho que colocar o repassword tbm
       
-      const user = new User(name, email, password);
+      const user = new User(email, password);
       usersDB.push(user);
 
       return res.status(201).send({
@@ -32,13 +32,13 @@ export class UserController {
 
   public getAllUsers(req: Request, res: Response) {
     try {
-      const { name, email } = req.query;
+      const { email } = req.query;
 
       let result = usersDB;
 
-      if (name) {
-        result = usersDB.filter((user) => user.name === name);
-      }
+      // if (name) {
+      //   result = usersDB.filter((user) => user.name === name);
+      // }
       if (email) {
         result = usersDB.filter((user) => user.email === email);
       }
@@ -111,7 +111,7 @@ export class UserController {
 
         return HttpResponse.success(res, "Login successfully done", {
             id: user.id,
-            name: user.name,
+            name: user.email,
         });
     } catch (error: any) {
         return HttpResponse.genericError(res, error);

@@ -14,7 +14,7 @@ export const usersRoutes = () => {
 
   app.post("/login",[ UserMiddleware.verificaUserExiste, ] ,new UserController().login);
 
-  app.use("/:idUser/recados", RecadosRouter());
+  app.use("/:idUser/recados", RecadosRouter()); //
 
   return app;
 };
