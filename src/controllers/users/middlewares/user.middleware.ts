@@ -72,6 +72,33 @@ export class UserMiddleware {
     }
   }
 
+
+  public static verificaEmailCorreto(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { email} = req.body;
+      const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
+      if (!email || !email.match(regexEmail)) {
+        return res.status(404).send({
+          ok: false,
+          message: "E-mail preenchido incorretamente Back-end!!",
+        });
+      }
+
+      next();
+    } catch (error: any) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
+        ok: false,
+        message: error.toString(),
+      });
+    }
+  }
+
+
   public static verificaSenhas(
     req: Request,
     res: Response,

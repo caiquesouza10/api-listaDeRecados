@@ -6,7 +6,7 @@ import { UserMiddleware } from './../controllers/users/middlewares/user.middlewa
 export const usersRoutes = () => {
   const app = Router();
 
-  app.post("/", [UserMiddleware.verificaCamposVazios, UserMiddleware.checkEmailExistence, UserMiddleware.verificaSenhas ],  new UserController().create)
+  app.post("/", [UserMiddleware.verificaCamposVazios, UserMiddleware.checkEmailExistence, UserMiddleware.verificaEmailCorreto ,UserMiddleware.verificaSenhas ],  new UserController().create)
 
   app.get("/", new UserController().getAllUsers);
 
